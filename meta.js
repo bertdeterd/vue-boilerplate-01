@@ -30,5 +30,5 @@ module.exports = {
   "filters": {
     
   },
-  "completeMessage": "${chalk.red('Nabewerkingen')}:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\n"
+  "completeMessage": "Nabewerkingen:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\n"
 };
