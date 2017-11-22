@@ -13,7 +13,7 @@ module.exports = {
     "name": {
       "type": "string",
       "required": true,
-      "message": "Project name"
+      "message": "Project naam"
     },
     "description": {
       "type": "string",
@@ -23,7 +23,7 @@ module.exports = {
     },
     "author": {
       "type": "string",
-      "message": "Author",
+      "message": "Developer",
       "default": "Creetion"
     },
     "build": {
