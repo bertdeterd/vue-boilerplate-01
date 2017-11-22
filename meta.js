@@ -8,6 +8,7 @@ module.exports = {
       return options.inverse(this);
     }
   },
+
   "prompts": {
     "name": {
       "type": "string",
@@ -16,13 +17,14 @@ module.exports = {
     },
     "description": {
       "type": "string",
-      "required": false,
-      "message": "Project description",
-      "default": "A Vue.js project"
+      "required": true,
+      "message": "Project beschrijving",
+      "default": "Vue.js template project"
     },
     "author": {
       "type": "string",
-      "message": "Author"
+      "message": "Author",
+      "default": "Creetion"
     },
     "build": {
       "type": "list",
