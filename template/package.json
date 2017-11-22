@@ -13,6 +13,7 @@
   "dependencies": {
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vuetify":"latest",
     "@sap/node-jwt": "1.4.2",
     "@sap/xsenv": "1.2.8",
     "@sap/xssec": "2.1.2",
