@@ -1,5 +1,5 @@
 <template>
-<v-app id="app">
+<v-app id="app" dark>
     <v-navigation-drawer
       fixed
       :mini-variant="miniVariant"
@@ -65,10 +65,6 @@
 
 </v-app>
 
- <!-- <div id="app">
-    <img src="./assets/logo.png">
-       <router-view/>
-  </div> -->
 </template>
 
 <script>
@@ -85,7 +81,7 @@ export default {
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: '{{ applicationtitle }}'
       }
     }
 }

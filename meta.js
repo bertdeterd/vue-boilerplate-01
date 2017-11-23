@@ -25,6 +25,11 @@ module.exports = {
       "type": "string",
       "message": "Developer",
       "default": "Creetion"
+    },
+    "applicationtitle": {
+      "type": "string",
+      "message": "Applicatie header",
+      "default": "Demo"
     }
   },
   "filters": {
