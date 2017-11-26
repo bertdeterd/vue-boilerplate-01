@@ -34,7 +34,7 @@ module.exports = {
     applicationtheme: {
       type: "list",
       message: "What theme to use as base?",
-      choices: "['dark','light']"
+      choices: ['dark','light']
     }
   },
   filters: {},
