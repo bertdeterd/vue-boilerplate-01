@@ -1,5 +1,5 @@
 <template>
-<v-app id="app" dark>
+<v-app id="app" {{applicationtheme}} >
     <v-navigation-drawer
       fixed
       :mini-variant="miniVariant"
