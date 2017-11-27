@@ -13,12 +13,12 @@ module.exports = {
     name: {
       type: "string",
       required: true,
-      message: "Project naam"
+      message: "Project name"
     },
     description: {
       type: "string",
       required: true,
-      message: "Project beschrijving",
+      message: "Project description",
       default: "Vue.js template project"
     },
     author: {
@@ -39,5 +39,5 @@ module.exports = {
   },
   filters: {},
   completeMessage:
-    "Nabewerkingen:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\n"
+    "Please perform the following steps:\n\n  {{^inPlace}}cd {{destDirName}}\n  {{/inPlace}}npm install\n  npm run dev\n\n"
 };
