@@ -72,7 +72,7 @@ export default {
   name: "app",
   data() {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: true,
       items: [{ icon: "bubble_chart", title: "Inspire" }],
