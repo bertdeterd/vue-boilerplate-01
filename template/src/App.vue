@@ -83,7 +83,10 @@ export default {
         rightDrawer: false,
         title: '{{ applicationtitle }}'
       }
-    }
+    },
+
+     created() {}
+     
 }
 </script>
 
