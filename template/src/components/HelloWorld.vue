@@ -1,8 +1,8 @@
 <template>
   <v-data-table
       v-model="selected"
-      :headers="headers"
-      :items="items"
+      v-bind:headers="headers"
+      v-bind:items="items"
       select-all
       v-bind:pagination.sync="pagination"
       item-key="name"
