@@ -1,28 +1,13 @@
 <template>
-  <div class="hello">
-    
- <!-- 
-   v-model: which modelobject holds the selected items
-   v-bind:item: which modelobject holds the items
-   v-bind:headers: which modelobject holds the headers
-   select-all: show select all button
-   item-key: key value to hold in selected items
- -->
-    <v-data-table
-    
-      v-model="selected" 
-      v-bind:headers="headers"
-      v-bind:items="items"
+  <v-data-table
+      v-model="selected"
+      :headers="headers"
+      :items="items"
       select-all
       v-bind:pagination.sync="pagination"
       item-key="name"
       class="elevation-1"
     >
-<!-- 
-  The scoped slot for templating the headers. 
-  Provide either a tr tag or th tags for all headers. 
-  Scope properties headers, indeterminate, and all.
--->
     <template slot="headers" slot-scope="props">
       <tr>
         <th>
@@ -43,12 +28,6 @@
         </th>
       </tr>
     </template>
-
-<!-- 
-  The scoped slot for templating the row display. 
-  Available props are the currently iterated item and its index within the iterated items array. 
-  Provide either a tr tag or td tags for all columns.
--->
     <template slot="items" slot-scope="props">
       <tr :active="props.selected" @click="props.selected = !props.selected">
         <td>
@@ -68,13 +47,9 @@
         <td class="text-xs-right">{{ props.item.iron }}</td>
       </tr>
     </template>
-
   </v-data-table>
-
-  </div>
-
-
 </template>
+
 
 <script>
 export default {
