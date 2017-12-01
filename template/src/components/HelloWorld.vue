@@ -1,39 +1,118 @@
 <template>
   <div class="hello">
-    <h1>\{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    
+ <!-- 
+   v-model: which modelobject holds the selected items
+   v-bind:item: which modelobject holds the items
+   v-bind:headers: which modelobject holds the headers
+   select-all: show select all button
+   item-key: key value to hold in selected items
+ -->
+    <v-data-table
+    
+      v-model="selected" 
+      v-bind:headers="headers"
+      v-bind:items="items"
+      select-all
+      v-bind:pagination.sync="pagination"
+      item-key="name"
+      class="elevation-1"
+    >
+<!-- 
+  The scoped slot for templating the headers. 
+  Provide either a tr tag or th tags for all headers. 
+  Scope properties headers, indeterminate, and all.
+-->
+    <template slot="headers" slot-scope="props">
+      <tr>
+        <th>
+          <v-checkbox
+            primary
+            hide-details
+            @click.native="toggleAll"
+            :input-value="props.all"
+            :indeterminate="props.indeterminate"
+          ></v-checkbox>
+        </th>
+        <th v-for="header in props.headers" :key="header.text"
+          :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+          @click="changeSort(header.value)"
+        >
+          <v-icon>arrow_upward</v-icon>
+          {{ header.text }}
+        </th>
+      </tr>
+    </template>
+
+<!-- 
+  The scoped slot for templating the row display. 
+  Available props are the currently iterated item and its index within the iterated items array. 
+  Provide either a tr tag or td tags for all columns.
+-->
+    <template slot="items" slot-scope="props">
+      <tr :active="props.selected" @click="props.selected = !props.selected">
+        <td>
+          <v-checkbox
+            primary
+            hide-details
+            :input-value="props.selected"
+          ></v-checkbox>
+        </td>
+        <td>{{ props.item.name }}</td>
+        <td class="text-xs-right">{{ props.item.calories }}</td>
+        <td class="text-xs-right">{{ props.item.fat }}</td>
+        <td class="text-xs-right">{{ props.item.carbs }}</td>
+        <td class="text-xs-right">{{ props.item.protein }}</td>
+        <td class="text-xs-right">{{ props.item.sodium }}</td>
+        <td class="text-xs-right">{{ props.item.calcium }}</td>
+        <td class="text-xs-right">{{ props.item.iron }}</td>
+      </tr>
+    </template>
+
+  </v-data-table>
+
   </div>
+
+
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-           }   
+      msg: "Welcome to Your Vue.js App",
+      selected: [],
+      headers: [
+        {
+          text: "Dessert (100g serving)",
+          align: "left",
+          value: "name"
+        },
+        { text: "Calories", value: "calories" },
+        { text: "Fat (g)", value: "fat" },
+        { text: "Carbs (g)", value: "carbs" },
+        { text: "Protein (g)", value: "protein" },
+        { text: "Sodium (mg)", value: "sodium" },
+        { text: "Calcium (%)", value: "calcium" },
+        { text: "Iron (%)", value: "iron" }
+      ],
+      items: []
+    };
+  },
+
+  created() {
+    this.$http.get("api/workflowset").then(response => {
+      this.items = response.data;
+    });
   }
-  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
