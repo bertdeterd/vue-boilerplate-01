@@ -83,6 +83,9 @@ export default {
     return {
       msg: "Welcome to Your Vue.js App",
       selected: [],
+      pagination: {
+        sortBy: "name"
+      },
       headers: [
         {
           text: "Dessert (100g serving)",
